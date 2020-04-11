@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="item">
+    <div class="class">
+        <h1>Первое правило бойцовского клуба</h1>
+    </div>
+</div>
+<div id="content"></div>
+<h1>Правила бойцовского клуба</h1>
+<div id="wrap">
+    <div class="rules rule1">
+        <h2>Первое правило Бойцовского клуба.</h2>
+        <p>Никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule2">
+        <h2>Второе правило Бойцовского клуба.</h2>
+        <p>Никогда никому не рассказывать о Бойцовском клубе.</p>
+    </div>
+    <div class="rules rule3">
+        <h2>Третье правило Бойцовского клуба.</h2>
+        <p>В схватке участвуют только двое.</p>
+    </div>
+    <div class="rules rule4">
+        <h2>Четвертое правило Бойцовского клуба.</h2>
+        <p>Не более одного поединка за один раз.</p>
+    </div>
+
+    <div class="rules rule5">
+        <h2>Пятое правило Бойцовского клуба.</h2>
+        <p>Бойцы сражаются без обуви и голые по пояс.</p>
+    </div>
+    <div class="rules rule6">
+        <h2>Шестое правило Бойцовского клуба.</h2>
+        <p>Поединок продолжается столько, сколько потребуется.</p>
+    </div>
+    <div class="rules rule7">
+        <h2>Седьмое правило Бойцовского клуба.</h2>
+        <p>Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок
+            окончен.</p>
+    </div>
+    <div class="rules rule8">
+        <h2>Восьмое и последнее правило Бойцовского клуба.</h2>
+        <p>Новичок обязан принять бой.</p>
+    </div>
+</div>
+<script>
+    //- создать 5 объектов. В каждом объекте не менее 3х полей. Все объекты разные по набору полей. (Т.е поле name  должно присутствовать только 1 раз в одном объекте )
+    let bird = {
+        color:'red',
+        isFly:true,
+        length:50,
+    };
+    let carSuzuki = {
+        transmission: 'auto',
+        yerProduction: 2010,
+        doors: 5,
+        type: 'minivan',
+    };
+    let dog = {
+        isTail: true,
+        name: 'Jack',
+        lengthTail: 5,
+        raceOf: 'Pug',
+    };
+    let computerHP = {
+        hdd: 4,
+        processor: 'Core i9',
+        isVideoCard: true,
+        lengthMonitor: 26,
+    };
+    let john = {
+        age: 30,
+        isDeveloper: true,
+        skill: 'Java',
+    };
+    //создать 5 объектов с полностью разным набором полей. В каждом объекте должен присутсвовать массив и внутренний объект. Опишите что угодно, машину, картину, болт... Пример : let man = { name: 'kokos', skills : ['java','js'] , wife: { name: 'cherry' } };
+    let man = {
+        name: 'kokos',
+        skills : ['java','js'] ,
+        wife: {
+            name: 'cherry'
+        }
+    };
+    let woman = {
+        name: 'Marry',
+        clothes: ['skirt', 'jacket'],
+        child:{
+            name: 'Bill'
+        }
+    };
+    let developer = {
+        name: 'George',
+        food: ['coffee', 'sandwich'],
+        friend:{
+            name: 'Ted',
+        }
+    };
+    let user = {
+        name: 'Fred',
+        programs: ['Windows 10 system', 'IntelliJiD'],
+        computer:{
+            name: 'Hp',
+        }
+    };
+    let driver = {
+        name: 'Bred',
+        cars: ['opel', 'BMW'],
+        boss:{
+            name: 'David',
+        }
+    };
+    //- При помощи for in вывести все ключи всех объектов из задания 1 и 2
+for (let key in bird){
+    console.log(key);
+}
+    for (let key in carSuzuki){
+        console.log(key);
+    }
+    for (let key in dog){
+        console.log(key);
+    }
+    for (let key in computerHP){
+        console.log(key);
+    }
+    for (let key in john){
+        console.log(key);
+    }
+    for (let key in man){
+        console.log(key);
+    }
+    for (let key in woman){
+        console.log(key);
+    }
+    for (let key in developer){
+        console.log(key);
+    }
+    for (let key in user){
+        console.log(key);
+    }
+    for (let key in driver){
+        console.log(key);
+    }
+    // При помощи Object.keys вывести все ключи всех объектов из задания 1 и 2
+    console.log(Object.keys(bird));
+    console.log(Object.keys(carSuzuki));
+    console.log(Object.keys(dog));
+    console.log(Object.keys(computerHP));
+    console.log(Object.keys(john));
+    console.log(Object.keys(man));
+    console.log(Object.keys(woman));
+    console.log(Object.keys(developer));
+    console.log(Object.keys(user));
+    console.log(Object.keys(driver));
+   //Создать массив из 10 объектов cars и заполнить его машинами с полями модель, год выпуска, мощность, цвет. (Значаения полей могу быть выдуманными)
+   let carArray = [
+       {model: 'Ford', year: 1999, power: 1.8, color: 'red'},
+       {model: 'Opel', year: 2010, power: 1.0, color: 'yellow'},
+       {model: 'BMW', year: 1993, power: 2.4, color: 'black'},
+       {model: 'Suzuki', year: 2004, power: 1.6, color: 'blue'},
+       {model: 'Mercedes', year: 2002, power: 2.8, color: 'white'},
+       {model: 'Honda', year: 2009, power: 1.4, color: 'silver'},
+       {model: 'VW', year: 2015, power: 1.9, color: 'green'},
+       {model: 'Mazda', year: 1996, power: 1.7, color: 'pink'},
+       {model: 'Toyota', year: 2012, power: 2.2, color: 'grey'},
+       {model: 'peugeot', year: 2019, power: 1.3, color: 'gold'}
+    ];
+    //- Создать массив объектов cities и заполнить его объектами с полями название, популяция, страна, регион. (Значаения полей могу быть выдуманными)
+   let citiesArray = [
+       {city: 'Tokio', population: 15, country: 'Japan', region: 'sakura'},
+       {city: 'Kiev', population: 9, country: 'Ukraine', region: 'kievskiy'},
+       {city: 'Warshawa', population: 5, country: 'Poland', region: 'mazurian'},
+       {city: 'Berlin', population: 10, country: 'Germany', region: 'brandenburg'},
+       {city: 'Paris', population: 12, country: 'France', region: 'shatoburdo'},
+       {city: 'Madrid', population: 8, country: 'Spain', region: 'catalonia'},
+       {city: 'London', population: 11, country: 'England', region: 'Sherwood'},
+       {city: 'Pekin', population: 25, country: 'China', region: 'shenchgen'},
+       {city: 'New York', population: 20, country: 'USA', region: 'NY'},
+       {city: 'Helsinki', population: 3, country: 'Finland', region: 'suomi'}
+   ];
+    //- Создать массив объектов cars и заполнить его машинами с полями модель, год выпуска, мощность, цвет, водитель. Водитель является отдельным объектом с полями имя, возраст, пол, стаж.
+    let carDriversArray = [
+        {model: 'Ford', year: 1999, power: 1.8, color: 'red', carDriver:{name: 'Viktor', age: 56, sex: 'male', experience: 20}},
+        {model: 'Opel', year: 2010, power: 1.0, color: 'yellow', carDriver:{name: 'Fedor', age: 26, sex: 'male', experience: 4}},
+        {model: 'BMW', year: 1993, power: 2.4, color: 'black', carDriver:{name: 'VAsya', age: 46, sex: 'male', experience: 18}},
+        {model: 'Suzuki', year: 2004, power: 1.6, color: 'blue', carDriver:{name: 'Ivan', age: 53, sex: 'male', experience: 30}},
+        {model: 'Mercedes', year: 2002, power: 2.8, color: 'white', carDriver:{name: 'Boris', age: 37, sex: 'male', experience: 10}},
+        {model: 'Honda', year: 2009, power: 1.4, color: 'silver', carDriver:{name: 'Vika', age: 36, sex: 'female', experience: 12}},
+        {model: 'VW', year: 2015, power: 1.9, color: 'green', carDriver:{name: 'Tolik', age: 34, sex: 'male', experience: 8}},
+        {model: 'Mazda', year: 1996, power: 1.7, color: 'pink', carDriver:{name: 'MAx', age: 26, sex: 'male', experience: 4}},
+        {model: 'Toyota', year: 2012, power: 2.2, color: 'grey', carDriver:{name: 'Denis', age: 39, sex: 'male', experience: 18}},
+        {model: 'Peugeot', year: 2019, power: 1.3, color: 'gold', carDriver:{name: 'Taras', age: 56, sex: 'male', experience: 20}}
+    ];
+    //- проитерировать каждый массив из задания 5,6,7 при помощи while.
+    let carCounter = 0;
+         while (carCounter < carArray.length){
+            console.log(carArray[carCounter]);
+            carCounter++;
+    }
+     let cityCounter = 0;
+    while (cityCounter < citiesArray.length){
+        console.log(citiesArray[cityCounter]);
+        cityCounter++;
+    }
+     carCounter = 0;
+    while (carCounter < carDriversArray.length){
+        console.log(carDriversArray[carCounter]);
+        carCounter++;
+    }
+    //- проитерировать каждый массив из задания 5,6,7 при помощи for .
+    for (let i = 0; i < carArray.length; i++){
+        console.log(carArray[i]);
+    }
+    for (let i = 0; i < citiesArray.length; i++){
+        console.log(citiesArray[i]);
+    }
+    for (let i = 0; i < carDriversArray.length; i++){
+        console.log(carDriversArray[i]);
+    }
+    //- проитерировать каждый массив из задания 5,6,7 при помощи  for of.
+    for (const value of carArray){
+        console.log(value);
+    }
+    for (const value of citiesArray){
+        console.log(value);
+    }
+    for (const value of carDriversArray){
+        console.log(value);
+    }
+    //- взять объекты из задания 1 и превратить каждый в json.
+    let jsonBird = JSON.stringify(bird);
+    console.log(jsonBird);
+    let jsonCarSuzuki = JSON.stringify(carSuzuki);
+    console.log(jsonCarSuzuki);
+    let jsonDog = JSON.stringify(dog);
+    console.log(jsonDog);
+    let jsonComputerHp = JSON.stringify(computerHP);
+    console.log(jsonComputerHp);
+    let jsonJohn = JSON.stringify(john);
+    console.log(jsonJohn);
+    //- взять json из задания 11 и превратить их обратно в объекты.
+    jsonBird = JSON.parse(jsonBird);
+    console.log(jsonBird);
+    jsonCarSuzuki = JSON.parse(jsonCarSuzuki);
+    console.log(jsonCarSuzuki);
+    jsonDog = JSON.parse(jsonDog);
+    console.log(jsonDog);
+    jsonComputerHp = JSON.parse(jsonComputerHp);
+    console.log(jsonComputerHp);
+    jsonJohn = JSON.parse(jsonJohn);
+    console.log(jsonJohn);
+    //- взять массив из задания 5,в цикле перебрать его объекты превратив их в json .
+    //let jsonCar = [];
+    for (let i = 0; i < carArray.length; i++){
+        // jsonCar[i] = JSON.stringify(carArray[i]);
+        console.log(JSON.stringify(carArray[i]));
+    }
+    //- взять массив из задания 6,в цикле перебрать его объекты превратив их в json .
+    //let jsonCitiesArray = [];
+    let citiesCounter = 0;
+    while (citiesCounter < citiesArray.length){
+        //jsonCitiesArray[citiesCounter] = JSON.stringify(citiesArray[citiesCounter]);
+        console.log(JSON.stringify(citiesArray[citiesCounter]));
+        citiesCounter++;
+    }
+    //- взять массив из задания 7,в цикле перебрать его объекты превратив их в json и сразу скоприовать в новый массив.
+    let jsonCarDriver = [];
+    for (let i = 0; i < carDriversArray.length; i++){
+        jsonCarDriver[i] = JSON.stringify(carDriversArray[i]);
+    }
+    console.log(jsonCarDriver);
+    //- Создать массив пользователей. У каждого пользователя обязательно должено быть поле skills которое является массивом. Проитерировать массив пользователей и в каждом пользователе проитерировать его массив skills
+    let users = [
+        {name: 'Kolya', age: 24, skills:['JS','Java','Kotlin']},
+        {name: 'Sanya', age: 29, skills:['HTML','JS','CSS']},
+        {name: 'Vitya', age: 22, skills:['Python','C++','C']},
+        {name: 'Igor', age: 36, skills:['JS','Java','Python']},
+        {name: 'Tolya', age: 34, skills:['C#','CSS','Kotlin']},
+        {name: 'Vanya', age: 27, skills:['Go','Python','C#']}
+    ];
+    for (let user of users){
+        console.log(user);
+        for (let skill of user.skills){
+            console.log(skill);
+        }
+    }
+   //- Создать массив пользователей. У каждого пользователя обязательно должено быть поле skills которое является массивом. Проитерировать массив пользователей и в каждом пользователе проитерировать его массив skills. Скопировать все skills всех пользователей в отедльный массив
+    let skills = [];
+    for (let user of users){
+        for (let skill of user.skills){
+            skills.push(skill);
+        }
+    }
+        console.log(skills);
+    //- За допомогою 2х циклів циклів проітеррувати  даний масив і масив кожного об'єкта.
+     users = [
+        {name: 'vasya', age: 31, status: false, skills: ['java', 'js']},
+        {name: 'petya', age: 30, status: true, skills: ['java', 'js', 'html']},
+        {name: 'kolya', age: 29, status: true, skills: ['mysql', ',mongo']},
+        {name: 'olya', age: 28, status: false, skills: ['java', 'js']},
+        {name: 'max', age: 30, status: true, skills: ['mysql', ',mongo']}
+        ];
+     let usersCounter = 0;
+     while (usersCounter < users.length){
+         console.log(users[usersCounter]);
+         let skillsCounter = 0;
+         while (skillsCounter < users[usersCounter].skills.length ){
+             console.log(users[usersCounter].skills[skillsCounter]);
+             skillsCounter++;
+         }
+         usersCounter++;
+     }
+    for (let user of users){
+        console.log(user);
+        for (let skill of user.skills){
+            console.log(skill);
+        }
+    }
+    //- З масиву users за допомогою циклу витягнути адреси користувачів і записати (скопіювати) їх в інший порожній масив.
+     users = [
+        {name: 'vasya',
+        age: 31,
+        status: false,
+        address: {city: 'Lviv', country: 'Ukraine', street: 'Shevchenko', houseNumber: 1}},
+        {name: 'petya',
+        age: 30,
+        status: true,
+        address: {city: 'New York', country: 'USA', street: 'East str', houseNumber: 21}},
+        {name: 'kolya',
+        age: 29,
+        status: true,
+        address: {city: 'Budapest', country: 'Hungary', street: 'Kuraku', houseNumber: 78}},
+        {name: 'olya',
+        age: 28,
+        status: false,
+        address: {city: 'Prague', country: 'Czech', street: 'Paster', houseNumber: 56}},
+        {name: 'max',
+        age: 30,
+        status: true,
+        address: {city: 'Istanbul', country: 'Turkey', street: 'Mikar', houseNumber: 39}},
+        {name: 'anya',
+        age: 31,
+        status: false,
+        address: {city: 'Rio', country: 'Brasil', street: 'Ronaldi', houseNumber: 5}},
+        {name: 'oleg',
+        age: 28,
+        status: false,
+        address: {city: 'Montreal', country: 'Canada', street: 'Acusto', houseNumber: 90}},
+        {name: 'andrey',
+        age: 29,
+        status: true,
+        address: {city: 'Quebeck', country: 'Canada', street: 'Binaro', houseNumber: 33}},
+        {name: 'masha',
+        age: 30,
+        status: true,
+        address: {city: 'Moscow', country: 'Russia', street: 'Gogolia', houseNumber: 1}},
+        {name: 'olya',
+        age: 31,
+        status: false,
+        address: {city: 'Portland', country: 'USA', street: 'Forest str', houseNumber: 4}},
+        {name: 'max',
+        age: 31,
+        status: true,
+        address: {city: 'Cairo', country: 'Egypt', street: 'Seashore', houseNumber: 45}}
+    ];
+   let adressArray = [];
+   for (let adres of users){
+           let adress = adres.address;
+           adressArray.push(adress);
+
+   }console.log(adressArray);
+   //- За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement. Всі данні в одному блоці.
+    for (let i = 0; i < users.length; i++){
+        const user = users[i];
+        const div = document.createElement("div");
+        div.innerText = `${user.name} ${user.age} ${user.status} ${JSON.stringify(user.address)}`;
+        document.body.appendChild(div);
+    }
+    //- За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement, розділивши всі властивості по своїм блокам (div>div*4)
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const div = document.createElement("div");
+        const h2 = document.createElement("h2");
+        const h1 = document.createElement("h1");
+        const p = document.createElement("p");
+        const p1 = document.createElement("p");
+        h2.innerText = user.name;
+        h1.innerText = user.age;
+        p.innerText = user.status;
+        p1.innerText = JSON.stringify(user.address);
+        div.appendChild(h2);
+        div.appendChild(h1);
+        div.appendChild(p);
+        div.appendChild(p1);
+        document.body.appendChild(div);
+    }
+    //- За допомоги циклу проітерувати  масив users, записати кожного юзера в сівй блок за допомоги document.createElement, розділивши всі властивості по своїм блокам , блок з адресою зробити окремим блоком, з блоками для кожної властивості
+    for (let i = 0; i < users.length; i++) {
+        const user = users[i];
+        const div = document.createElement("div");
+        const h2 = document.createElement("h2");
+        const h1 = document.createElement("h1");
+        const p = document.createElement("p");
+        //const adress = document.createElement("div");
+        h2.innerText = user.name;
+        h1.innerText = user.age;
+        p.innerText = user.status;
+
+        div.appendChild(h2);
+        div.appendChild(h1);
+        div.appendChild(p);
+        document.body.appendChild(div);
+        for (const value in user.address){
+            const adress = document.createElement("div");
+            adress.innerText = user.address[value];
+            div.appendChild(adress);
+            document.body.appendChild(div);
+        }
+    }
+    //З'єднати в один об'єкт користувача та місто з відповідними "id" та "user_id" .
+    //Записати цей об'єкт в новий масив
+
+
+    let usersWithId = [
+        {id: 1, name: 'vasya', age: 31, status: false},
+        {id: 2, name: 'petya', age: 30, status: true},
+        {id: 3, name: 'kolya', age: 29, status: true},
+        {id: 4, name: 'olya', age: 28, status: false},
+    ];
+    let citiesWithId = [
+        {user_id: 3, country: 'USA', city: 'Portland'},
+        {user_id: 1, country: 'Ukraine', city: 'Ternopil'},
+        {user_id: 2, country: 'Poland', city: 'Krakow'},
+        {user_id: 4, country: 'USA', city: 'Miami'},
+    ];
+    for (const  user of usersWithId){
+        for (const city of citiesWithId){
+            if (user.id === city.user_id){
+                user.address = city;
+
+            }
+        }
+    }
+    console.log(usersWithId);
+    //- створити розмітці блок з id, class та текстом в середені. Зчитати окремо цей текст з селекторів по id , class та тегу
+    const textId = document.getElementById("item");
+    let text = textId.innerText;
+    console.log(text);
+    const textClass = document.getElementsByClassName("class");
+    for (const text of textClass){
+        console.log(text);
+    }
+    const textTeg = document.getElementsByTagName('h1');
+    for (const text of textTeg){
+        console.log(text);
+    }
+    //  - змінити цей текст використовуючи селектори id, class,  tag
+    const rule = 'Первое правило бойцовского клуба';
+    /*if (text === rule){
+        text = "Второе правило бойцовского клуба";
+    }
+    console.log(text);
+    for (const value of textClass){
+        if (value.innerText === rule){
+            value.innerText = 'Третье правило бойцовского клуба';
+        }
+        console.log(value);
+    }*/
+    for (const value of textTeg){
+        if(value.innerText === rule){
+            value.innerText = 'четвёртое правило клуба';
+            console.log(value);
+        }
+    }
+//- змінити висоту та ширину блоку використовуючи селектори id, class,  tag
+    textId.style.width = '400px';
+    textId.style.height = '50px';
+    for (const value of textClass){
+        value.style.width = '500px';
+        value.style.height = '40px';
+    }
+    for (const text of textTeg){
+        text.style.width = '600px';
+        text.style.height = '60px';
+    }
+    //- за допомоги document.createElement та appendChild створити таблицю на 1 рядок з трьома ячейками всередені
+    const table = document.createElement("table");
+    const tr = document.createElement("tr");
+    const  td = document.createElement("td");
+    const  td1 = document.createElement("td");
+    const  td2 = document.createElement("td");
+    tr.appendChild(td);
+    tr.appendChild(td1);
+    tr.appendChild(td2);
+    table.appendChild(tr);
+    document.body.appendChild(table);
+    //- за допомоги document.createElement, appendChild та циклу створити таблицю на 10 рядків з трьома ячейками всередені
+    const table1 = document.createElement("table");
+    const tr1 = document.createElement("tr");
+    for (let i = 0; i < 10; i++){
+    const  td = document.createElement("td");
+    tr1.appendChild(td);
+    }
+    table1.appendChild(tr1);
+    document.body.appendChild(table1);
+    //- за допомоги document.createElement, appendChild та 2х циклів створити таблицю на 10 рядків з 5 ячейками всередені
+    const table2 = document.createElement("table");
+    for (let i = 0; i < 10; i++){
+        const tr = document.createElement("tr");
+        for (let j =0; j < 5; j++){
+       const td = document.createElement("td");
+       tr.appendChild(td);
+        }
+        table2.appendChild(tr);
+    }
+    document.body.appendChild(table2);
+    //- за допомоги document.createElement, appendChild та 2х циклів створити таблицю на n рядків з m ячейками всередені. n та m отримати з prompt
+    const table3 = document.createElement("table");
+    const n = parseInt(prompt('Введите колличество рядков'));
+    const m = parseInt(prompt('Введите колличество столбцов'));
+    for (let i = 0; i < m; i++){
+        const tr = document.createElement("tr");
+        for (let j = 0; j < n; j++){
+            const td = document.createElement("td");
+            tr.appendChild(td);
+        }
+        table3.appendChild(tr);
+    }
+    document.body.appendChild(table3);
+    //--Завантажити з мережі будь-який шаблон сайту. Підключити до нього свій скріпт-файл. У файлі прописати наступні доступи та дії
+    //- знайти всі елементі, які мають class
+
+    const  elementClass = document.querySelectorAll('[class]');
+        console.log(elementClass);
+
+
+    // - знайти всі параграфи ,та змінити текст на hello oktenweb!
+    const  elementP = document.querySelectorAll('p');
+    for (const itemP of elementP){
+        itemP.innerText = 'Hello oktenweb';
+    }
+    // - знайти всі div та змінити ім колір на червоний
+    const elementDiv = document.querySelectorAll('div');
+    for (const div of elementDiv){
+        div.style.backgroundColor = 'red';
+        console.log(div);
+    }
+   /* - є сторінка rules.html. Контентом сторінки є заголовки та параграфи. Заголовки (h2) характеризують тему контенту яка вказана в параграфі.
+        створити скрипт, котрий зчитує всі заголовки, та робить в блоці з id=content з них список(ul>li), який буде змістом того, що знаходиться на сторінці.
+        Скріпт повинен працювати навіть якщо кількість блоків з заголовком та параграфом зміниться.*/
+   const elementH2 = document.getElementsByTagName("h2");
+   const content = document.getElementById('content');
+   const ul = document.createElement("ul");
+   for (const element of elementH2){
+       const li = document.createElement("li");
+       li.innerText = element.innerText;
+       ul.appendChild(li);
+   }
+   content.appendChild(ul);
+    /*Є масив котрий характеризує правила. Створити скрипт який ітерує цей масив, та робить з кожне правило в окремому блоці.
+        При цому в блоці, номер правила записати в свій блок, текст правила записати в свій окремий блок.
+        Результатом відпрацювання скріпта повинна бути структура яка міститься в блоці wrap файла rule.html*/
+
+
+    let rules = [
+        {
+            title: 'Первое правило Бойцовского клуба.',
+            body: 'Никому не рассказывать о Бойцовском клубе.'
+        },
+        {
+            title: 'Второе правило Бойцовского клуба.',
+            body: 'Никогда никому не рассказывать о Бойцовском клубе.'
+        },
+        {
+            title: 'Третье правило Бойцовского клуба.',
+            body: 'В схватке участвуют только двое.'
+        },
+        {
+            title: 'Четвертое правило Бойцовского клуба.',
+            body: 'Не более одного поединка за один раз.'
+        },
+        {
+            title: 'Пятое правило Бойцовского клуба.',
+            body: 'Бойцы сражаются без обуви и голые по пояс.'
+        },
+        {
+            title: 'Шестое правило Бойцовского клуба.',
+            body: 'Поединок продолжается столько, сколько потребуется.'
+        },
+        {
+            title: 'Седьмое правило Бойцовского клуба.',
+            body: 'Если противник потерял сознание или делает вид, что потерял, или говорит «Хватит» — поединок окончен.'
+        },
+        {
+            title: 'Восьмое и последнее правило Бойцовского клуба.',
+            body: 'Новичок обязан принять бой.'
+        },
+
+    ];
+    const wrap = document.createElement("div");
+    wrap.id = 'wrap';
+    for (let i = 0; i < rules.length; i++){
+        const rule = rules[i];
+        const ruless = document.createElement("div");
+        const h2 = document.createElement("h2");
+        const p = document.createElement("p");
+        ruless.className = `rules rule${i + 1}`;
+        h2.innerText = rule.title;
+        p.innerText = rule.body;
+        ruless.appendChild(h2);
+        ruless.appendChild(p);
+        wrap.appendChild(ruless);
+
+    }
+    document.body.appendChild(wrap);
+
+//*** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі users. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт в свій блок (блок в блоці).
+    let usersNext = [];
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(result =>{
+        for (const user of result){
+            usersNext.push(user);
+            const divElement = document.createElement("div");
+            const divElement1 = document.createElement("div");
+            const divElement2 = document.createElement("div");
+            divElement2.innerText = `company: ${JSON.stringify(user.company)}`;
+            divElement1.innerText = `address: ${JSON.stringify(user.address)}`;
+            divElement.innerText = `id: ${user.id} name: ${user.name} username: ${user.username} email: ${user.email} phone: ${user.phone} website:${user.website}`;
+            divElement.appendChild(divElement1);
+            divElement.appendChild(divElement2);
+            document.body.appendChild(divElement);
+
+        }
+    });
+   
+    //*** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі posts. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт(якщо він існує) в свій блок (блок в блоці).
+
+    console.log(usersNext);
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(responsive => responsive.json())
+    .then(result =>{
+        for (const user of result) {
+            const divElement = document.createElement("div");
+            divElement.innerText = `userID: ${user.userId} id${user.id} title:${user.title} body: ${user.body}`;
+            document.body.appendChild(divElement);
+
+        }
+    } )
+    //*** за допомогою fetch (як в прикладі) отримати від jsonplaceholder всі comments. За допомогою document.createElement вивести їх в браузер. Помістити кожен окремий об'єкт в блок, при цьому кожен внутрішній об'єкт(якщо він існує) в свій блок (блок в блоці).
+    fetch('https://jsonplaceholder.typicode.com/comments')
+    .then(responsive => responsive.json())
+    .then(result =>{
+        for (const user of result) {
+            const divElement = document.createElement("div");
+            divElement.innerText = `postID: ${user.postId} id${user.id} name: ${user.name} email:${user.email} body: ${user.body}`;
+            document.body.appendChild(divElement);
+        }
+    })
+//****** при помощи fetch (как в примере) получить от jsonplaceholder все posts. Внутри последнего then() сделать еще один fetch который сделает запрос и получит все comments. Объеденить соответсвующий post с соответсвующими comment и вывести в браузер. Подсказка : в каждом comment есть поле postId которое определяет какой комментарий принадлежит какому посту
+
+   /* fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(responsive => responsive.json())
+        .then(result1 =>
+         fetch("https://jsonplaceholder.typicode.com/comments"))
+            .then(responsive => responsive.json())
+            .then(result => {
+                for (const user of result1) {
+                    const divElement = document.createElement("div");
+                    divElement.innerText = `userID: ${user.userId} id${user.id} title:${user.title} body: ${user.body}`;
+                    document.body.appendChild(divElement);
+                }
+            })*/
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset style="width: 300px">
+    <legend>Адрессная книга</legend>
+    <br>
+    <button id="btnleft1" value="Save" name="button">Left</button>
+    <button id="btnright1" value="Save" name="button">Right</button>
+    <div id="content">
+    <textarea id="addressbook" aria-atomic="true" style="height: 60px" name="text-area">
+    </textarea>
+        <button id="deleter">Удалить контакт</button>
+    </div>
+    <form action="" name="adressbook" id="adressid">
+        <p>ФИО</p>
+        <input id="names" value="" name="namee">
+        <p>Номер</p>
+        <input id="num" value="" name="number">
+        <p>Email</p>
+        <input id="email" value="" name="email">
+        <p>Фирма</p>
+        <input id="firm" value="" name="firm">
+        <p>Отдел</p>
+        <input id="part" value="" name="part">
+        <p>День Рождения</p>
+        <input id="bd" value="" type="date" name="bd">
+        <input type="submit" name="submit" id="submit">
+    </form>
+    <button id="redactor">Редактировать</button>
+</fieldset>
+<br>
+<br>
+<script>
+    const textAreaAddress = document.getElementById('addressbook')
+    const usersArray = 'Users';
+    let counterId;
+    const forms = document.forms.adressbook;
+    const parseArray = JSON.parse(localStorage.getItem(usersArray));
+    const redactorBtn = document.getElementById('redactor');
+    const leftBtn = document.getElementById('btnleft1');
+    const right = document.getElementById('btnright1');
+    const deleter = document.getElementById('deleter');
+    forms.hidden = true;
+    leftBtn.onclick = () => {
+        right.hidden = false;
+        getter(parseCounterId - 1);
+        parseCounterId--;
+        if (parseCounterId <= parseArray[0].id) {
+            leftBtn.hidden = true;
+        }
+    };
+    right.onclick = () => {
+        leftBtn.hidden = false;
+        getter(parseCounterId + 1);
+        parseCounterId++;
+        if (parseCounterId >= JSON.parse(localStorage.getItem('counterId'))) {
+            right.hidden = true;
+        }
+    };
+
+    deleter.onclick = () => {
+        deletter(parseCounterId);
+       if (parseCounterId < parseArray[parseArray.length-1].id){
+           parseCounterId = parseArray[parseArray.length-1].id;
+       }
+       else {
+           parseCounterId --;
+       }
+        localStorage.setItem('counterId', JSON.stringify(parseCounterId));
+    };
+    redactorBtn.onclick = () => {
+        forms.hidden ? forms.hidden = false : forms.hidden = true;
+    };
+    if (localStorage.getItem('counterId') === 'null') {
+        counterId = 0;
+    } else {
+        counterId = JSON.parse(localStorage.getItem('counterId')) + 1;
+    }
+    forms.submit.onclick = (ev) => {
+        let user = {};
+
+        localStorage.setItem('counterId', counterId);
+        for (let i = 0; i < forms.children.length; i++) {
+            const formElement = forms.children[i];
+            if (formElement.name && formElement.type !== 'submit') {
+                user[formElement.name] = formElement.value;
+                user.id = counterId;
+            }
+        }
+        setUsersLS(user);
+        console.log(user);
+        counterId++;
+    };
+    let parseCounterId = JSON.parse(localStorage.getItem('counterId'));
+    function getter(index) {
+        console.log(parseArray);
+        for (const user of parseArray) {
+            if (user.id === index) {
+                forms.namee.value = user.namee;
+                forms.number.value = user.number;
+                forms.email.value = user.email;
+                forms.firm.value = user.firm;
+                forms.part.value = user.part;
+                forms.bd.value = user.bd;
+                textAreaAddress.value = user.namee;
+            }
+        }
+    }
+    getter(parseCounterId);
+    function setUsersLS(users) {
+        if (localStorage.hasOwnProperty(usersArray)) {
+            const arrayParseUsers = JSON.parse(localStorage.getItem(usersArray));
+            const find = arrayParseUsers.find = (value => value.id === users.id);
+            if (find === true) {
+                const filterUsers = arrayParseUsers.filter = (value => value.id !== users.id);
+                filterUsers.push(users);
+                localStorage.setItem(usersArray, JSON.stringify(arrayParseUsers));
+            } else {
+                arrayParseUsers.push(users);
+                localStorage.setItem(usersArray, JSON.stringify(arrayParseUsers));
+            }
+        } else {
+
+            localStorage.setItem(usersArray, JSON.stringify([users]));
+        }
+    }
+     function deletter(id) {
+        const filter = parseArray.filter(value => value.id !== id );
+        localStorage.setItem(usersArray, JSON.stringify(filter));
+        location.reload()
+     }
+</script>
+</body>
+</html>

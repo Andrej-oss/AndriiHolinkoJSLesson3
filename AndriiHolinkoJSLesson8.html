@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset style="width: 300px">
+<legend>Задание 2</legend>
+<form action="" name="storage" id="formsStorage">
+    <textarea id="textAreaId" aria-atomic="true"   name="text-area" cols="30" rows="10"></textarea>
+    <br>
+    <input type="text1" value="" name="inputs" id="inputForm1">
+    <input type="text2" value="" name="inputs" id="inputFprm2">
+    <br>
+    <select id="selectid" role="menu"  name="select-name">
+        <option disabled>правила бойцовского клуба</option>
+        <option value="rule2">правило 1</option>
+        <option value="rule3">правило 2</option>
+        <option value="rule4">правило 3</option>
+        <option value="rule5">правило 4</option>
+        <option value="rule6">правило 5</option>
+        <option value="rule7">правило 6</option>
+    </select>
+    <input type="checkbox" id="checkbox1" name="checker" value="false">
+    <input type="checkbox" id="checkbox2" name="checker" value="false">
+    <input type="checkbox" id="checkbox3" name="checker" value="false">
+    <input type="checkbox" id="checkbox4" name="checker" value="false">
+    <input type="radio" id="radiobutton1" name="radiobtn">
+    <input type="radio" id="radiobutton2" name="radiobtn">
+    <input type="radio" id="radiobutton3" name="radiobtn">
+    <input type="radio" id="radiobutton4" name="radiobtn">
+    <input type="radio" id="radiobutton5" name="radiobtn">
+    <input type="radio" id="radiobutton6" name="radiobtn">
+</form>
+</fieldset>
+<br>
+<br>
+<button id="btnleft" value="Save" name="button">Left</button>
+<button id="btnright" value="Save" name="button">Right</button>
+<br>
+<form id="forms" name="formname" action="">
+    <textarea id="textArea" aria-atomic="true" style="height: 60px"  name="text-area">
+    </textarea>
+</form>
+<button id="btn" value="Save" name="button">Save</button>
+<br>
+<br>
+<br>
+<fieldset style="width: 300px">
+    <legend>Адрессная книга</legend>
+    <br><button id="btnleft1" value="Save" name="button">Left</button>
+    <button id="btnright1" value="Save" name="button">Right</button>
+    <div id="content">
+    <textarea id="addressbook" aria-atomic="true" style="height: 60px"  name="text-area">
+    </textarea>
+        <button id="deleter">Удалить контакт</button>
+    </div>
+    <form action="" name="adressbook" id="adressid">
+        <p>ФИО</p>
+        <input id="names" value=""><p>Номер</p>
+        <input id="num" value=""><p>Email</p>
+        <input id="email" value=""><p>Фирма</p>
+        <input id="firm" value=""><p>Отдел</p>
+        <input id="part" value=""><p>День Рождения</p>
+        <input id="bd" value="">
+    </form>
+    <button id="redactor">Редактировать</button>
+    <button id="saver">Сохранить</button>
+</fieldset>
+<br>
+<br>
+<script>
+    //- Дана textarea.
+    //В неё вводится текст.
+     //   Сделайте так, чтобы после захода на эту страницу через некоторое время, введенный текст остался в textarea.
+     const input = document.createElement("textarea");
+     input.setAttribute('textarea','txt');
+     document.body.appendChild(input);
+     input.oninput = () => {
+         localStorage.setItem('txt', input.value);
+     };
+     const localStorageText = localStorage.getItem('txt');
+     if (!input.value){
+         input.value = localStorageText;
+     }
+     /*- Дана форма с инпутами, текстареа, чекбоксами, радио кнопочками, селектами и тп.
+    Пользователь вводит какие-то данные и закрывает страницу (не факт, что он заполнил всю форму).
+    Сделайте так, чтобы при следующем заходе на страницу введенные им ранее данные стояли на своих местах.
+        Сделайте ваш скрипт как можно более универсальным.*/
+      const forms = document.forms.storage;
+    console.log(forms)
+    const textInputForm = forms.inputFprm2;
+    const textForms = forms.textAreaId;
+    const textInput = forms.inputForm1;
+    const checkboxForm = forms.checkbox1;
+    const checkboxForm1 = forms.checkbox2;
+    const checkboxForm2 = forms.checkbox3;
+    const checkboxForm3 = forms.checkbox4;
+    const selectForm = forms.selectid;
+    ///скпипт для любого коллтчества радиокнопок
+    let  radioForm = document.getElementsByName('radiobtn');
+        for (let i = 0; i < radioForm.length; i++) {
+            let radio = radioForm[i];
+            radio.onclick = () => {
+                  localStorage.setItem('radio' + i, radio.value);
+                for (let j = 0; j < radioForm.length; j++) {
+                    if (i !== j) {
+                        localStorage.removeItem('radio' + j);
+                    }
+                }
+            };
+        }
+    for (let i = 0; i < radioForm.length; i++){
+        if (!radioForm[i].checked){
+            radioForm[i].checked = localStorage.getItem('radio' + i);
+        }
+    }
+    ///функция для инпутов и селекторов
+    function inputer(elementInputForms, name) {
+        elementInputForms.oninput = () => {
+            localStorage.setItem(name, elementInputForms.value);
+        };
+        const localStorageInputer =  localStorage.getItem(name);
+        if (!elementInputForms.value){
+            elementInputForms.value = localStorageInputer;
+        }
+        else{
+            elementInputForms.value = localStorageInputer;
+        }
+    }
+    ///функция для проверки чекбоксов
+    function checker(elementCheckedForm, name){
+        elementCheckedForm.onclick = () => {
+            elementCheckedForm.checked? localStorage.setItem(name, elementCheckedForm.value):
+                localStorage.removeItem(name);
+        };
+        const localStorageChecker = localStorage.getItem(name);
+        if (!elementCheckedForm.checked){
+            elementCheckedForm.checked = localStorageChecker;
+        }
+    }
+    inputer(selectForm, 'selector');
+    inputer(textForms, 'name');
+    inputer(textInput, 'textInputForm1');
+    checker(checkboxForm, 'checkbox1');
+    checker(checkboxForm1, 'checkbox2');
+    checker(checkboxForm2, 'checkbox3');
+    checker(checkboxForm3, 'checkbox4');
+    inputer(textInputForm, 'inputForm2');
+   ///Решение способом показанным на практике. мой скрипт работает, но твой мне чуток больше понравился т.к. он более униыерсальный
+    // и более абстрактный, но есть проблема, так как он привязан к длине списка локал Стореджа и пришлось его закоментить
+    //т.к он поломал мне код ниже
+/*getter(forms);
+    function setter(elementsForm){
+        for (let i = 0; i < elementsForm.length; i++){
+            const elementForm = elementsForm[i];
+            console.log(elementForm);
+            if ((elementForm.type === 'radio')||(elementForm.type === 'checkbox')){
+                elementForm.checked ? elementForm.value = 'on' : elementForm.value = 'off';
+            }
+            localStorage.setItem(elementForm.id, elementForm.value);
+        }
+    }
+    function getter(form) {
+        for (let i = 0; i < localStorage.length; i++) {
+            if (localStorage.hasOwnProperty(form.children[i].id)) {
+                form.children[i].value = localStorage.getItem(form.children[i].id);
+                if (form.children[i].value === 'on') {
+                    form.children[i].setAttribute('checked', 'checked')
+                }
+            }
+        }
+    }*/
+    /*-Дан текстареа. В него можно ввести данные, нажать кнопку "сохранить" и они "фикисруются" (в хранилище), затем поредактировать их, затем еще поредактировать и возможно еще.....
+    Требование : хранить историю своих изменений (даже после перезагрузки страницы).
+    Сверху над текстареа должны появится стрелочки, с помощью которых можно перемещаться по истории (не забудьте!чекпоинт истории - нажатеи кнопки сохранить).*/
+    let textArea = document.getElementById('textArea');
+    const buttonDoc = document.getElementById('btn');
+    const leftBtn = document.getElementById('btnleft');
+    const rightBtn = document.getElementById('btnright');
+    let counter = 0;
+    buttonDoc.onclick = () => {
+            localStorage.setItem('text' + counter, textArea.value);
+            localStorage.setItem('counter', JSON.stringify(counter));
+            counter++;
+    };
+    leftBtn.onclick = () =>{
+       textArea.value = localStorage.getItem('text' +(counterStorage - 1));
+       counterStorage--;
+    };
+    rightBtn.onclick = () =>{
+        textArea.value = localStorage.getItem('text' +(counterStorage + 1));
+        counterStorage++;
+    };
+    let counterStorage = JSON.parse(localStorage.getItem('counter'));
+    if (textArea.value){
+        textArea.value = localStorage.getItem('text' + (counterStorage));
+    }
+    /*- Реализуйте записную книгу, хранящую данные в локальном хранилище.
+    Данные которые надо сохранять : ФИО, номер, почта, фирма, отдел, день рождения
+    Данные вводить через соответсвующую форму.
+    --Каждому контакту добавить кнопку для удаления контакта.
+    --Каждому контакту добавить кнопку редактироваиня. При нажати на нее появляется форма, в которой есть все необходимые инпуты для редактирования, которые уже заполнены данными объекта*/
+    const addressForm = document.forms.adressbook;
+    const inputName = addressForm.names;
+    const inputNumber = addressForm.num;
+    const inputEmail = addressForm.email;
+    const inputFirm = addressForm.firm;
+    const inputPart = addressForm.part;
+    const inputBirthday = addressForm.bd;
+    const textAreaAddress = document.getElementById('addressbook');
+    const div = document.getElementById('content');
+    const saverButton = document.getElementById('saver');
+    const redactorButton = document.getElementById('redactor');
+    const rightAdressbtn = document.getElementById('btnright1');
+    const leftAdressbtn = document.getElementById('btnleft1');
+    const deleteButton = document.getElementById('deleter');
+    addressForm.hidden = true;
+    redactorButton.onclick = () => {
+        addressForm.hidden ? addressForm.hidden = false: addressForm.hidden = true;
+
+    };
+    let counterContact;
+    if (localStorage.getItem('counterContact') === 'null'){
+        counterContact = 0;
+    }
+    else {
+        counterContact = JSON.parse(localStorage.getItem('counterContact')) + 1;
+    }
+    saverButton.onclick = () => {
+        localStorage.setItem('names' + counterContact, inputName.value);
+        localStorage.setItem('number' + counterContact, inputNumber.value);
+        localStorage.setItem('email' + counterContact, inputEmail.value);
+        localStorage.setItem('firm' + counterContact, inputFirm.value);
+        localStorage.setItem('part' + counterContact, inputPart.value);
+        localStorage.setItem('birthday' + counterContact, inputBirthday.value);
+        localStorage.setItem('counterContact', JSON.stringify(counterContact));
+        counterContact++;
+    };
+    let counterStorageContact = JSON.parse(localStorage.getItem('counterContact'));
+    leftAdressbtn.onclick = () =>{
+        textAreaAddress.value = localStorage.getItem('names' +(counterStorageContact - 1));
+        inputName.value = localStorage.getItem('names' + (counterStorageContact - 1));
+        inputNumber.value = localStorage.getItem('number' + (counterStorageContact - 1));
+        inputEmail.value = localStorage.getItem('email' + (counterStorageContact - 1));
+        inputFirm.value = localStorage.getItem('firm' + (counterStorageContact - 1));
+        inputPart.value = localStorage.getItem('part' + (counterStorageContact - 1));
+        inputBirthday.value = localStorage.getItem('birthday' + (counterStorageContact - 1));
+        counterStorageContact--;
+    };
+    rightAdressbtn.onclick = () =>{
+        textAreaAddress.value = localStorage.getItem('names' +(counterStorageContact + 1));
+        inputName.value = localStorage.getItem('names' + (counterStorageContact + 1));
+        inputNumber.value = localStorage.getItem('number' + (counterStorageContact + 1));
+        inputEmail.value = localStorage.getItem('email' + (counterStorageContact + 1));
+        inputFirm.value = localStorage.getItem('firm' + (counterStorageContact + 1));
+        inputPart.value = localStorage.getItem('part' + (counterStorageContact + 1));
+        inputBirthday.value = localStorage.getItem('birthday' + (counterStorageContact + 1));
+        counterStorageContact++;};
+        deleteButton.onclick = () =>{
+            localStorage.removeItem('names' + (counterStorageContact));
+            localStorage.removeItem('number' + (counterStorageContact));
+            localStorage.removeItem('email' + (counterStorageContact));
+            localStorage.removeItem('firm' + (counterStorageContact));
+            localStorage.removeItem('part' + (counterStorageContact));
+            localStorage.removeItem('birthday' + (counterStorageContact));
+    };
+    if (textAreaAddress.value){
+        textAreaAddress.value = localStorage.getItem('names' + counterStorageContact);
+        textAreaAddress.value = localStorage.getItem('names' +(counterStorageContact));
+        inputName.value = localStorage.getItem('names' + (counterStorageContact ));
+        inputNumber.value = localStorage.getItem('number' + (counterStorageContact));
+        inputEmail.value = localStorage.getItem('email' + (counterStorageContact));
+        inputFirm.value = localStorage.getItem('firm' + (counterStorageContact ));
+        inputPart.value = localStorage.getItem('part' + (counterStorageContact));
+        inputBirthday.value = localStorage.getItem('birthday' + (counterStorageContact));
+    }
+
+</script>
+</body>
+</html>

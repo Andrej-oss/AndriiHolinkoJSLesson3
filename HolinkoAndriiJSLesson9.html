@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   /* let energy = 0;
+    function wakeUp(isRest, cb){
+        setTimeout(() => {
+            if (isRest === true){
+                console.log('Im feeling so good!!');
+                energy = 1000;
+                cb(null, energy);
+            }
+            else {
+                console.log('Bad');
+                cb('Go to sleep', energy);
+            }
+        }, 10000);
+    }
+    function morningRun(energy, cb) {
+        setTimeout(() => {
+            if (energy > 500){
+                console.log('Running its a best for a awakening');
+                energy -= 100;
+                cb(null, energy);
+            }
+            else {
+                console.log('Are you insane? I very tiered for a running');
+                cb('Fuck offf');
+            }
+        },1000)
+
+    }
+    function washingAndShower(energy, cb) {
+        setTimeout(() => {
+            if (energy > 300) {
+                energy -= 80;
+                console.log("Im feeling so fresh");
+                energy += 50;
+                cb(null, energy);
+            }
+            else {
+                console.log('Im sleeping now....ZZZZzzzzzzz');
+                cb('ZZZZZzzzzzzz', energy)
+            }
+        }, 1000);
+    }
+    function cooking(energy, cb){
+        setTimeout(() =>{
+            if (energy > 300){
+                energy -= 150;
+                console.log('Cooking. I hate cooking. But im so hungry');
+                energy += 80;
+                cb(null, energy);
+                console.log('OOO borsch so delicious')
+            }
+            else{
+                console.log('I dont want to cooking');
+                cb('Sheeetttt!!!!', energy)
+            }
+        },1000)
+    }
+    function working(energy, cb){
+        setTimeout(() => {
+            if (energy > 500){
+                energy -= 400;
+                console.log('After the work i tiered!!!!!!');
+                cb(null, energy);
+            }
+            else {
+                console.log('Im so tiered');
+                cb('Are you nuts, im going to rest', energy);
+            }
+        },5000);
+    }
+    function codding(energy, cb){
+        setTimeout(() => {
+            if (energy > 250){
+                energy -= 100;
+                console.log('i need to improve my codding skills. Its so good');
+                cb(null, energy);
+            }
+            else{
+                console.log('No way.');
+                cb('I have a head Ache', energy);
+            }
+        }, 2000)
+    }
+    function beerDrinking(energy, cb){
+        setTimeout(() => {
+            if (energy > 200) {
+                energy += 50;
+                console.log('bottle icy beer in the end of a working day. So good');
+                cb(null, energy);
+            }
+            else {
+                console.log('No, not now. Better to go sleep');
+                cb('Sleeeeeepppp');
+            }
+        }, 1000);
+    }
+    function gaming(energy, cb){
+        setTimeout(() => {
+            if (energy > 200){
+                console.log('oohh i have a mission in RDR2');
+                energy -= 100;
+                cb(null, energy)
+            }
+            else {
+                console.log('No way. I go to sleep');
+                cb('Sleeeeppp!!!!');
+            }
+        }, 2000)
+    }
+    wakeUp(true, (error, energy) => {
+        if (error){
+            console.error(error);
+        }
+        else{
+            console.table(energy);
+            morningRun(energy, (error, energy) =>{
+                if (error){
+                    console.error(error);
+                }
+                else {
+                    console.table(energy);
+                    washingAndShower(energy, (error, energy) => {
+                        if (error){
+                            console.error(error);
+                        }
+                        else {
+                            console.table(energy);
+                            cooking(energy, (error, energy) => {
+                                if (error){
+                                    console.error(error);
+                                }
+                                else {
+                                    console.table(energy);
+                                    working(energy, (error, energy) => {
+                                        if (error){
+                                            console.error(error);
+                                        }
+                                        else {
+                                            console.table(energy);
+                                            cooking(energy, (error, energy) => {
+                                                if (error){
+                                                    console.error(error);
+                                                }
+                                                else {
+                                                    console.table(energy);
+                                                    codding(energy, (error, energy) => {
+                                                        if (error){
+                                                            console.error(error);
+                                                        }
+                                                        else {
+                                                            console.table(energy);
+                                                            beerDrinking(energy, (error, energy) => {
+                                                                if (error){
+                                                                    console.error(error);
+                                                                }
+                                                                else {
+                                                                    console.table(energy);
+                                                                    gaming(energy, (error, energy) => {
+                                                                        if (error){
+                                                                            console.error(error);
+                                                                        }
+                                                                        else {
+                                                                            console.table(energy);
+                                                                            gaming(energy, (error, energy) => {
+                                                                                if (error){
+                                                                                    console.error(error);
+                                                                                }
+                                                                                else {
+                                                                                    console.table(energy);
+                                                                                }
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    })
+                }
+
+            })
+        }
+    });*/
+///////////Promises
+    let energy = 0;
+    function wakeUp(isRest){
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (isRest === true) {
+                    console.log('Im feeling so good!!');
+                    energy = 1000;
+                   resolve(energy);
+                } else {
+                    console.log('Bad');
+                    reject('Go to sleep');
+                }
+            }, 10000);
+        });
+    }
+    function morningRun(energy) {
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 500){
+                console.log('Running its a best for a awakening');
+                energy -= 100;
+                resolve(energy);
+            }
+            else {
+                console.log('Are you insane? I very tiered for a running');
+                reject('Fuck offf');
+            }
+        },1000)
+        });
+    }
+    function washingAndShower(energy) {
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 300) {
+                energy -= 80;
+                console.log("Im feeling so fresh");
+                energy += 50;
+                resolve(energy);
+            }
+            else {
+                console.log('Im sleeping now....ZZZZzzzzzzz');
+                reject('ZZZZZzzzzzzz')
+            }
+        }, 1000);
+        });
+    }
+    function cooking(energy){
+        return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            if (energy > 300){
+                energy -= 150;
+                console.log('Cooking. I hate cooking. But im so hungry');
+                energy += 80;
+                resolve(energy);
+                console.log('OOO borsch so delicious')
+            }
+            else{
+                console.log('I dont want to cooking');
+                reject('Sheeetttt!!!!')
+            }
+        },1000)
+        });
+    }
+    function working(energy){
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 500){
+                energy -= 400;
+                console.log('After the work i tiered!!!!!!');
+                resolve( energy);
+            }
+            else {
+                console.log('Im so tiered');
+                reject('Are you nuts, im going to rest');
+            }
+        },5000);
+        });
+    }
+    function codding(energy){
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 250){
+                energy -= 100;
+                console.log('i need to improve my codding skills. Its so good');
+                resolve(energy);
+            }
+            else{
+                console.log('No way.');
+                reject('I have a head Ache');
+            }
+        }, 2000)
+        });
+    }
+    function beerDrinking(energy){
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 200) {
+                energy += 50;
+                console.log('bottle icy beer in the end of a working day. So good');
+                resolve(energy);
+            }
+            else {
+                console.log('No, not now. Better to go sleep');
+                reject('Sleeeeeepppp');
+            }
+        }, 1000);
+        });
+    }
+    function gaming(energy){
+        return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (energy > 200){
+                console.log('oohh i have a mission in RDR2');
+                energy -= 100;
+                resolve(energy)
+            }
+            else {
+                console.log('No way. I go to sleep');
+                reject('Sleeeeppp!!!!');
+            }
+        }, 2000)
+        })
+    }
+    wakeUp(true)
+    .then(energy => {
+        console.log(energy);
+        return morningRun(energy);
+    })
+    .then(energy =>{
+        console.log(energy);
+        return washingAndShower(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return cooking(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return working(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return cooking(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return codding(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return beerDrinking(energy);
+    })
+    .then(energy => {
+        console.log(energy);
+        return gaming(energy);
+    })
+        .then(energy => {
+            console.log(energy);
+            return gaming(energy);
+        })
+    .catch(reason => {
+        console.log(reason);
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1) Створити карту користувача(User Card): Створити функцію «userCard» яка приймає число(будь-яке число)  і повертає об’єкт з методами: const card3 = userCard(3);
+    // returns an object with methods
+    function userCard(number) {
+        let card = {};
+         function getCardOption(){
+           this.balance = 100;
+           this.transactionLimit = 100;
+           this.historyLogs = [];
+           this.key = number;
+       }
+        function putBalance (value) {
+            this.balance += value;
+            this.historyLogs.push( {
+                operationType : 'Received credits',
+                credits : value,
+                operationTime : new Date()})
+        }
+        function takeCredit(value) {
+             if ((value <= this.balance)&&(value <= this.transactionLimit)) {
+                 this.balance -= value;
+                 this.historyLogs.push( {
+                 operationType : 'Withdrawal of credits',
+                 credits : value,
+                 operationTime : new Date()})
+             }
+             else {
+                 console.error('You don\'t have so much money');
+             }
+        }
+        function transferCredit(value, card) {
+                  this.balance -= value;
+                  card.balance += value - (value * 0.05);
+        }
+        function setTransactionLimit(value) {
+             this.transactionLimit = value;
+             this.historyLogs.push( {
+             operationType : 'Transaction limit change',
+             credits : value,
+             operationTime : new Date()});
+        }
+       return {
+           getCardOption, putBalance, takeCredit, setTransactionLimit, transferCredit
+       }
+    }
+
+    //2) Створити UserAccount: Створити класс `UserAccount` (для цього завдання можна використати ES6 класс або звичайну функцію):
+    let cardCounter = 1;
+     class UserAccount {
+        constructor(name) {
+            this.name = name;
+            this.cards = [];
+
+        }
+
+        addCard() {
+            if ((cardCounter > 0)&&(cardCounter <= 3)) {
+                let card = userCard(cardCounter)
+                card.getCardOption();
+                this.cards.push(card)
+            cardCounter++;
+            }
+            else {
+                console.log('не может быть больще 3 карт')
+            }
+        }
+        getCardByKey(number){
+           number = this.cards[number]
+           return number;
+        }
+    }
+    const user = new UserAccount('Bob');
+
+    const user1 = new UserAccount('Jack');
+    user.addCard();
+    user.addCard();
+    user.addCard();
+
+      let card1 = user.getCardByKey(1);
+    let card2 = user.getCardByKey(2);
+    card1.putBalance(500);
+      card1.takeCredit(100);
+    card1.setTransactionLimit(800);
+    card1.transferCredit(300, card2);
+      card2.takeCredit(50);
+      console.log(user);
+    console.log(user)
+    console.log(card1);
+    console.log(card2)
+
+</script>
+</body>
+</html>

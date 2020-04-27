@@ -11,22 +11,22 @@
     function userCard(number) {
         let card = {};
          function getCardOption(){
-           this.balance = 100;
-           this.transactionLimit = 100;
-           this.historyLogs = [];
-           this.key = number;
+           card.balance = 100;
+           card.transactionLimit = 100;
+           card.historyLogs = [];
+           card.key = number;
        }
         function putBalance (value) {
-            this.balance += value;
-            this.historyLogs.push( {
+            card.balance += value;
+            card.historyLogs.push( {
                 operationType : 'Received credits',
                 credits : value,
                 operationTime : new Date()})
         }
         function takeCredit(value) {
-             if ((value <= this.balance)&&(value <= this.transactionLimit)) {
-                 this.balance -= value;
-                 this.historyLogs.push( {
+             if ((value <= card.balance)&&(value <= card.transactionLimit)) {
+                 card.balance -= value;
+                 card.historyLogs.push( {
                  operationType : 'Withdrawal of credits',
                  credits : value,
                  operationTime : new Date()})
@@ -36,18 +36,18 @@
              }
         }
         function transferCredit(value, card) {
-                  this.balance -= value;
+                  card.balance -= value;
                   card.balance += value - (value * 0.05);
         }
         function setTransactionLimit(value) {
-             this.transactionLimit = value;
-             this.historyLogs.push( {
+             card.transactionLimit = value;
+             card.historyLogs.push( {
              operationType : 'Transaction limit change',
              credits : value,
              operationTime : new Date()});
         }
        return {
-           getCardOption, putBalance, takeCredit, setTransactionLimit, transferCredit
+           getCardOption, putBalance, takeCredit, setTransactionLimit, transferCredit, card
        }
     }
 
